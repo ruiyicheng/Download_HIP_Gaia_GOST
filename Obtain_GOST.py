@@ -1,8 +1,10 @@
 # Author: Yicheng Rui
 # Email:  ruiyicheng@sjtu.edu.cn
-
+# This code is used for downloading the GOST data given a list of ra dec and target name. You can revise line 98 and 99 for your own purpose.
+# usage:
+# python Obtain_GOST.py --file /absolute/path/to/the.csv
 import argparse
-parser = argparse.ArgumentParser(description='healpixlim')
+parser = argparse.ArgumentParser(description='target folder path')
 parser.add_argument("--file", type=str, default='demo.csv')
 args = parser.parse_args()
 import glob
@@ -21,6 +23,7 @@ def find_target(ra,dec,tgname):
     # 'http': 'http://proxy2.pi.sjtu.edu.cn:3128',
     # 'https': 'http://proxy2.pi.sjtu.edu.cn:3128',
     # }
+    # Similar to the code of HTOF (Brandt, G. Mirek 2021)
     url = f"https://gaia.esac.esa.int/gost/GostServlet?ra="+str(ra)+"&dec="+str(dec)
 
     with requests.Session() as s:
