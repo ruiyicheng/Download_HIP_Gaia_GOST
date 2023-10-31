@@ -1,4 +1,4 @@
---The following code is used for downloading the Gaia DR1 DR2 DR3 astrometry for non-single stars combined with their HIP and TYC ids.
+--The following code is used for downloading the Gaia DR1 DR2 DR3 astrometry for non-single stars combined with their HIP and TYC ids. If you want to obtain the astrometry for the targets without complete Gaia DRs data, use LEFT JOIN instead of JOIN.
 --The code should be used in the ADQL interface at https://gea.esac.esa.int/archive/ -> SEARCH -> Advanced(ADQL)
 SELECT 
 dr3.source_id AS dr3_source_id,
