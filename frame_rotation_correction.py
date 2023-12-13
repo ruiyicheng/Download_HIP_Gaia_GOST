@@ -68,7 +68,7 @@ class Collaborator:
                 pmra = astrometry_df_this['pmra']/206264.80624709636/1000     #mas/yr->rad/yr
                 pmdec = astrometry_df_this['pmdec']/206264.80624709636/1000      #mas/yr->rad/yr
                 have_pm = 1
-                if pmra == -99999999 or pmdec == -99999999:
+                if astrometry_df_this['pmra'] == -99999999 or astrometry_df_this['pmra'] == -99999999:
                     have_pm = 0
             except:
                 pmra = 0
@@ -78,6 +78,7 @@ class Collaborator:
                 plx = astrometry_df_this['plx']
                 have_Plx = 1
                 if plx == -99999999:
+                    plx = 0
                     have_Plx = 0
             except:
                 plx = 0
