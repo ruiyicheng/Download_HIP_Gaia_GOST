@@ -16,7 +16,7 @@ import pandas as pd
 from datetime import datetime
 from datetime import timedelta
 import os
-t0=time.time()
+# t0=time.time()
 
 def find_target(ra,dec,tgname):
     # proxies = {                                           #The proxy of SJTU Siyuan cluster
@@ -84,22 +84,22 @@ def find_target(ra,dec,tgname):
     #print(res)
     #res.to_csv('this_data_reduced.csv',index=False)
     return res
+if __name__=='__main__':
+    targets=pd.read_csv(args.file,dtype={'dr3_source_id': 'Int64'})
+    # try: #create the folder. uncomment it when running the script for the first time.
+    #     os.system('mkdir '+args.file[:-4])
+    # except:
+    #     pass
+    datapaths=glob.glob(args.file[:-4]+'/*.csv')
+    for i,r in targets.iterrows():
 
-targets=pd.read_csv(args.file,dtype={'dr3_source_id': 'Int64'})
-# try: #create the folder. uncomment it when running the script for the first time.
-#     os.system('mkdir '+args.file[:-4])
-# except:
-#     pass
-datapaths=glob.glob(args.file[:-4]+'/*.csv')
-for i,r in targets.iterrows():
-
-    prepare_name=args.file[:-4]+'/'+str(r['dr3_source_id'])+'.csv'
-    if prepare_name in datapaths:#if the target have already been downloaded, skip it.
-        continue
-    print('processing:',r['dr3_source_id'],'  ra, dec:',r['dr3_ra'],r['dr3_dec'])
-    try:
-        gost_res=find_target(r['dr3_ra'],r['dr3_dec'],r['dr3_source_id'])
-        gost_res.to_csv(args.file[:-4]+'/'+str(r['dr3_source_id'])+'.csv',index=False)
-    except:
-        print('failed:',r['dr3_source_id'],'  ra, dec:',r['dr3_ra'],r['dr3_dec'])
-    #print(gost_res)
+        prepare_name=args.file[:-4]+'/'+str(r['dr3_source_id'])+'.csv'
+        if prepare_name in datapaths:#if the target have already been downloaded, skip it.
+            continue
+        print('processing:',r['dr3_source_id'],'  ra, dec:',r['dr3_ra'],r['dr3_dec'])
+        try:
+            gost_res=find_target(r['dr3_ra'],r['dr3_dec'],r['dr3_source_id'])
+            gost_res.to_csv(args.file[:-4]+'/'+str(r['dr3_source_id'])+'.csv',index=False)
+        except:
+            print('failed:',r['dr3_source_id'],'  ra, dec:',r['dr3_ra'],r['dr3_dec'])
+        #print(gost_res)

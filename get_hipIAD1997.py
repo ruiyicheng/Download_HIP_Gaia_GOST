@@ -8,7 +8,7 @@ import urllib
 import bs4
 
 # Get access to Hipparcos IAD 1997 version.
-def get_hipIAD1997(HIP):
+def get_hipIAD1997(HIP,relative_path = 'results/HIP_epoch/test.csv'):
     url = f'https://hipparcos-tools.cosmos.esa.int/cgi-bin/HIPcatalogueSearch.pl?noLinks=1&tabular=1&hipiId={HIP}'
     webpage = str(urllib.request.urlopen(url).read())
     soup = bs4.BeautifulSoup(webpage,'html.parser')
@@ -48,7 +48,7 @@ def get_hipIAD1997(HIP):
                     'ref_great-circle_mid-epoch [yr]','ref_great-circle_epoch_time [yr]',
                     'great-circle_pole_ra [deg]','great-circle_pole_dec [deg]']
         df = pd.DataFrame(zip(*data_list_tt),columns=colnames)
-        df.to_csv(f'/path/to/hipIAD_1997/HIP{HIP}.csv',index=False)  # Adjust the path to save the IAD csv files by yourself
+        df.to_csv(relative_path,index=False)  # Adjust the path to save the IAD csv files by yourself
 
-    except IndexError:  # A minority of HIP intermediate data cannot be found.
+    except:  # A minority of HIP intermediate data cannot be found.
         print(f'The Hipparcos intermediate astrometric data of HIP{HIP} cannot be found.')
