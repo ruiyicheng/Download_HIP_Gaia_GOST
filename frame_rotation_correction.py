@@ -23,13 +23,13 @@ class Collaborator:
         
             coeff = dict(coeff)
             #print(coeff['ex23'])
-            coeff['ex23'] = np.squeeze(coeff['ex23'].values)/206264.80624709636/1000 #mas->rad
-            coeff['ey23'] = np.squeeze(coeff['ey23'].values)/206264.80624709636/1000 #mas->rad
-            coeff['ez23'] = np.squeeze(coeff['ez23'].values)/206264.80624709636/1000 #mas->rad
-            coeff['ox23'] = np.squeeze(coeff['ox23'].values)/206264.80624709636/1000 #mas/yr ->rad/yr
-            coeff['oy23'] = np.squeeze(coeff['oy23'].values)/206264.80624709636/1000 #mas/yr ->rad/yr
-            coeff['oz23'] = np.squeeze(coeff['oz23'].values)/206264.80624709636/1000 #mas/yr ->rad/yr
-            coeff['plx23'] =np.squeeze(coeff['plx23'].values)
+            coeff['ex23'] = -np.squeeze(coeff['ex23'].values)/206264.80624709636/1000 #mas->rad
+            coeff['ey23'] = -np.squeeze(coeff['ey23'].values)/206264.80624709636/1000 #mas->rad
+            coeff['ez23'] = -np.squeeze(coeff['ez23'].values)/206264.80624709636/1000 #mas->rad
+            coeff['ox23'] = -np.squeeze(coeff['ox23'].values)/206264.80624709636/1000 #mas/yr ->rad/yr
+            coeff['oy23'] = -np.squeeze(coeff['oy23'].values)/206264.80624709636/1000 #mas/yr ->rad/yr
+            coeff['oz23'] = -np.squeeze(coeff['oz23'].values)/206264.80624709636/1000 #mas/yr ->rad/yr
+            coeff['plx23'] =-np.squeeze(coeff['plx23'].values)
             coeff['a3'] = np.squeeze(coeff['a3'].values)
             coeff['a2'] = np.squeeze(coeff['a2'].values)
             coeff['a1'] = np.squeeze(coeff['a1'].values)
@@ -37,7 +37,7 @@ class Collaborator:
             coeff['b2'] = np.squeeze(coeff['b2'].values)
             coeff['b1'] = np.squeeze(coeff['b1'].values)
             beta = np.array([coeff['ex23'],coeff['ey23'],coeff['ez23'],coeff['ox23'],coeff['oy23'],coeff['oz23'],coeff['plx23']]).reshape(-1,1)
-            Dt = 0.5
+            Dt = -0.5
         if catalogue == 'HIPtoVLBI2015':
             beta = np.array([0,0,0,0.126/206264.80624709636/1000,-0.185/206264.80624709636/1000,-0.076/206264.80624709636/1000,0.089]).reshape(-1,1)
             Dt = 23.75

@@ -29,13 +29,13 @@ Collaborator <- list(
       }
 
       coeff <- as.list(coeff)
-      coeff['ex23'] <- as.numeric(coeff['ex23']) / 206264.80624709636 / 1000
-      coeff['ey23'] <- as.numeric(coeff['ey23']) / 206264.80624709636 / 1000
-      coeff['ez23'] <- as.numeric(coeff['ez23']) / 206264.80624709636 / 1000
-      coeff['ox23'] <- as.numeric(coeff['ox23']) / 206264.80624709636 / 1000
-      coeff['oy23'] <- as.numeric(coeff['oy23']) / 206264.80624709636 / 1000
-      coeff['oz23'] <- as.numeric(coeff['oz23']) / 206264.80624709636 / 1000
-      coeff['plx23'] <- as.numeric(coeff['plx23'])
+      coeff['ex23'] <- -as.numeric(coeff['ex23']) / 206264.80624709636 / 1000
+      coeff['ey23'] <- -as.numeric(coeff['ey23']) / 206264.80624709636 / 1000
+      coeff['ez23'] <- -as.numeric(coeff['ez23']) / 206264.80624709636 / 1000
+      coeff['ox23'] <- -as.numeric(coeff['ox23']) / 206264.80624709636 / 1000
+      coeff['oy23'] <- -as.numeric(coeff['oy23']) / 206264.80624709636 / 1000
+      coeff['oz23'] <- -as.numeric(coeff['oz23']) / 206264.80624709636 / 1000
+      coeff['plx23'] <- -as.numeric(coeff['plx23'])
       coeff['a3'] <- as.numeric(coeff['a3'])
       coeff['a2'] <- as.numeric(coeff['a2'])
       coeff['a1'] <- as.numeric(coeff['a1'])
@@ -48,7 +48,7 @@ Collaborator <- list(
   as.numeric(coeff['ox23']), as.numeric(coeff['oy23']), as.numeric(coeff['oz23']),
   as.numeric(coeff['plx23'])
 ), ncol = 1)
-      Dt <- 0.5
+      Dt <- -0.5
     }
     if (catalogue == "HIPtoVLBI2015") {
     beta <- matrix(c(0, 0, 0, 0.126/206264.80624709636/1000,
