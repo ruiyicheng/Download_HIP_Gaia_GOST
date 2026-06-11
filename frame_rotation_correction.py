@@ -95,6 +95,6 @@ class Collaborator:
         )
         astro_origin = np.array([ra*np.cos(dec),dec,plx,pmra,pmdec]).reshape(-1,1)
 
-        collaborated_astrometry = np.squeeze(astro_origin-Kappa.dot(beta))
+        collaborated_astrometry = np.squeeze(astro_origin+Kappa.dot(beta))
         res = {'ra':collaborated_astrometry[0]/np.cos(dec)*180/np.pi,'dec':collaborated_astrometry[1]*180/np.pi,'plx':collaborated_astrometry[2]*have_Plx-(1-have_Plx)*99999999,'pmra':have_pm*collaborated_astrometry[3]*206264.80624709636*1000-(1-have_pm)*99999999,'pmdec':have_pm*collaborated_astrometry[4]*206264.80624709636*1000-(1-have_pm)*99999999}
         return res

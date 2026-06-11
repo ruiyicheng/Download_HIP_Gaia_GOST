@@ -139,7 +139,7 @@ Collaborator <- list(
     astro_origin <- matrix(c(ra*cos(dec),dec,plx,pmra,pmdec), ncol = 1)
 
     beta <- as.matrix(data.frame(beta),ncol = 1)
-    collaborated_astrometry <- astro_origin - Kappa %*% beta
+    collaborated_astrometry <- astro_origin + Kappa %*% beta
     res <- list(ra = collaborated_astrometry[1]/cos(dec)*180/pi, 
                 dec = collaborated_astrometry[2]*180/pi, 
                 plx = collaborated_astrometry[3]*have_Plx-(1-have_Plx)*99999999, 
